@@ -127,7 +127,7 @@ insert new Task(WhatId = osf.Id, WhoId = sam.Id, Subject = 'Data Pipelines scopi
 
 // Public executives, so the enrichment API can identify them. No contact details are seeded.
 insert new List<Lead>{
-    new Lead(FirstName = 'Gerry', LastName = 'Szatvanyi', Company = 'OSF Digital', Website = 'https://osf.digital', LeadSource = 'Web'),
+    new Lead(FirstName = 'Amir', LastName = 'Halloul', Company = 'OSF Digital', Website = 'https://osf.digital', LeadSource = 'Web'),
     new Lead(FirstName = 'Stuart', LastName = 'Machin', Company = 'Marks and Spencer', Website = 'https://www.marksandspencer.com', LeadSource = 'Web')
 };
 
