@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CspTrustedSite xmlns="http://soap.sforce.com/2006/04/metadata">
     <context>All</context>
-    <description>Org domain, so the Acme Sales Assistant can link to Meeting Brief records.</description>
+    <description>Org domain, so the AllAI Sales Assistant can link to Meeting Brief records.</description>
     <endpointUrl>https://orgfarm-358a26fdab-dev-ed.develop.my.salesforce.com</endpointUrl>
     <isActive>true</isActive>
     <isApplicableToConnectSrc>true</isApplicableToConnectSrc>

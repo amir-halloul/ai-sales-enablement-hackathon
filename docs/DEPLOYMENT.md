@@ -1,6 +1,6 @@
 # Deployment Guide
 
-This guide installs the **Acme Sales Assistant** in a Salesforce org, starting from an empty org and ending with a working demo. It has two parts:
+This guide installs the **AllAI Sales Assistant** (API name `Acme_Sales_Assistant`) in a Salesforce org, starting from an empty org and ending with a working demo. It has two parts:
 
 - **Part A: Enrichment API.** A Docker container on any HTTPS host. Fly.io is the reference host.
 - **Part B: Salesforce.** Metadata deploy, credentials, prompt templates, agent publish, permissions and demo data.

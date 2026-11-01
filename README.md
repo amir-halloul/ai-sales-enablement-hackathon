@@ -1,4 +1,4 @@
-# Acme Sales Assistant: Meeting Briefs and Record Enrichment with Agentforce
+# AllAI Sales Assistant: Meeting Briefs and Record Enrichment with Agentforce
 
 > An Agentforce employee agent that gets a sales rep ready for a customer meeting in about a minute. It enriches Accounts and Leads with verified company data and writes a cited, five-section meeting brief from CRM history, subscriptions, pipeline, conversations and live company signals.
 
@@ -39,7 +39,7 @@
 | | |
 |---|---|
 | **Target user** | B2B account executives and SDRs who work in Salesforce and run several customer meetings a day |
-| **Agent** | `Acme_Sales_Assistant`, an Agentforce Employee Agent written in Agent Script, with 5 Apex actions |
+| **Agent** | **AllAI Sales Assistant** (API name `Acme_Sales_Assistant`), an Agentforce Employee Agent written in Agent Script, with 5 Apex actions |
 | **Generative AI** | 5 Prompt Builder flex templates grounded by Apex, running through the Einstein Trust Layer; OpenAI web research inside the Enrichment API |
 | **External service** | Enrichment API (NestJS, containerized), called through a Named Credential and an API-key External Credential |
 | **UI** | Agentforce panel, a `meetingBrief` LWC on Account, Event and Task pages, and an **Enrich Record** quick action on Account and Lead |
@@ -108,7 +108,7 @@ flowchart LR
 
     subgraph SF["Salesforce org"]
         direction TB
-        agent["Agentforce Employee Agent<br/><b>Acme_Sales_Assistant</b><br/>(Agent Script)"]
+        agent["Agentforce Employee Agent<br/><b>AllAI Sales Assistant</b><br/>(Agent Script)"]
         ui["Lightning UI<br/>meetingBrief LWC<br/>Enrich Record action"]
         actions["Apex invocable actions<br/>search_records, list_meetings,<br/>enrich_record,<br/>generate_meeting_brief, get_meeting_brief"]
         enrich["EnrichmentService<br/>EnrichmentFieldMapper<br/>(CMDT field mappings)"]
@@ -188,7 +188,7 @@ The design is **synchronous**: callouts happen before any DML, and the brief is 
 
 ## The agent
 
-**`Acme_Sales_Assistant`** is defined in [Agent Script](force-app/main/default/aiAuthoringBundles/Acme_Sales_Assistant/Acme_Sales_Assistant.agent) (`AgentforceEmployeeAgent`).
+**AllAI Sales Assistant** (API name `Acme_Sales_Assistant`) is defined in [Agent Script](force-app/main/default/aiAuthoringBundles/Acme_Sales_Assistant/Acme_Sales_Assistant.agent) (`AgentforceEmployeeAgent`).
 
 | Subagent | Purpose |
 |---|---|
