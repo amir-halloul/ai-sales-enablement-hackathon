@@ -1,0 +1,34 @@
+<template>
+    <lightning-quick-action-panel header="Enrich Record">
+        <template lwc:if={isWorking}>
+            <div class="enrichment-state slds-is-relative">
+                <lightning-spinner alternative-text="Enriching" size="small"></lightning-spinner>
+                <p class="enrichment-state__text slds-text-color_weak">Looking up company data…</p>
+            </div>
+        </template>
+        <template lwc:elseif={errorMessage}>
+            <div class="enrichment-state" role="alert">
+                <lightning-icon icon-name="utility:error" variant="error" size="small" alternative-text="Error"></lightning-icon>
+                <p class="slds-var-m-top_x-small">{errorMessage}</p>
+            </div>
+        </template>
+        <template lwc:else>
+            <div class="enrichment-state" role="status">
+                <lightning-icon
+                    icon-name={statusIcon.name}
+                    variant={statusIcon.variant}
+                    size="small"
+                    alternative-text={result.status}
+                ></lightning-icon>
+                <p class="slds-text-heading_small slds-var-m-top_x-small">{result.status}</p>
+                <p class="slds-var-m-top_x-small">{result.message}</p>
+                <template lwc:if={hasUpdatedFields}>
+                    <p class="slds-text-color_weak slds-var-m-top_x-small">Updated: {updatedFieldsText}</p>
+                </template>
+            </div>
+        </template>
+        <div slot="footer">
+            <lightning-button label="Close" onclick={handleClose} disabled={isWorking}></lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+</template>

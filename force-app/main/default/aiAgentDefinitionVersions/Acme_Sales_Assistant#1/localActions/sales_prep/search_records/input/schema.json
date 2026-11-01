@@ -1,0 +1,14 @@
+{
+  "required" : [ "searchText" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "searchText" : {
+      "title" : "Search Text",
+      "description" : "Name or part of the name of the account, company or lead.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

@@ -1,0 +1,52 @@
+{
+  "name": "enrichment-api",
+  "version": "0.1.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node --env-file-if-exists=.env --import ./dist/telemetry/register.js dist/main.js",
+    "start:dev": "tsc-watch -p tsconfig.build.json --onSuccess \"node --env-file-if-exists=.env --import ./dist/telemetry/register.js dist/main.js\"",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:live": "vitest run --mode live --silent=false",
+    "test:ci": "vitest run --coverage --reporter=default --reporter=junit --outputFile.junit=reports/junit.xml"
+  },
+  "dependencies": {
+    "@nestjs/common": "^12.1.1",
+    "@nestjs/core": "^12.1.1",
+    "@nestjs/platform-express": "^12.1.1",
+    "@opentelemetry/api": "^1.9.1",
+    "@opentelemetry/exporter-metrics-otlp-grpc": "^0.223.0",
+    "@opentelemetry/exporter-trace-otlp-grpc": "^0.223.0",
+    "@opentelemetry/instrumentation-http": "^0.223.0",
+    "@opentelemetry/instrumentation-undici": "^0.33.0",
+    "@opentelemetry/sdk-node": "^0.223.0",
+    "@opentelemetry/sdk-trace": "^2.12.0",
+    "handlebars": "^4.7.9",
+    "node-html-markdown": "^2.0.0",
+    "node-html-parser": "^6.1.13",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "tldts": "^7.4.16",
+    "undici": "^8.11.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@nestjs/testing": "^12.1.1",
+    "@types/node": "^24.19.0",
+    "@types/supertest": "^7.2.1",
+    "@vitest/coverage-v8": "^5.0.2",
+    "eslint": "^10.11.0",
+    "supertest": "^7.3.0",
+    "tsc-watch": "^7.2.1",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.0",
+    "vitest": "^5.0.2"
+  }
+}

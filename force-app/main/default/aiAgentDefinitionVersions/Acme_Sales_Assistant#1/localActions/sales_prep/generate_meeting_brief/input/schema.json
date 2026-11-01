@@ -1,0 +1,28 @@
+{
+  "required" : [ ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "accountId" : {
+      "title" : "Account Id",
+      "description" : "Record Id of the Account. Optional when a meeting Id is given.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "meetingId" : {
+      "title" : "Meeting Id",
+      "description" : "Record Id of the Task or Event the brief prepares for. Optional.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "sections" : {
+      "title" : "Sections",
+      "description" : "Comma-separated sections: Bottom Line, Who You're Meeting, Where We Stand, What's New, Call Plan. Empty means all.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

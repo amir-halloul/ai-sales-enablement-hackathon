@@ -1,0 +1,21 @@
+{{#if knownFacts.length}}
+
+Our data vendors report the values below. Check each one against public sources and report what the sources say, also when it matches:
+{{#each knownFacts}}
+- {{field}}: {{value}} ({{vendors}})
+{{/each}}
+{{/if}}
+{{#if disputedFacts.length}}
+
+Our data vendors disagree on the values below. Find out from public sources which value is correct, or the correct value when none is:
+{{#each disputedFacts}}
+- {{field}}: {{#each values}}{{#unless @first}} or {{/unless}}{{value}} ({{vendors}}){{/each}}
+{{/each}}
+{{/if}}
+{{#if missingFacts.length}}
+
+Our data vendors have no value for the facts below. Finding them is the priority:
+{{#each missingFacts}}
+- {{this}}
+{{/each}}
+{{/if}}

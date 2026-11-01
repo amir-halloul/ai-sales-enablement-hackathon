@@ -1,0 +1,51 @@
+{{#if company}}
+Company: {{company.name}}
+{{#if company.website}}
+Website: {{company.website}}
+{{/if}}
+{{#if company.industry}}
+Industry: {{company.industry}}
+{{/if}}
+{{#if company.description}}
+Description: {{company.description}}
+{{/if}}
+{{/if}}
+{{#if person}}
+Person: {{person.name}}
+{{#if person.jobTitle}}
+Job title: {{person.jobTitle}}
+{{/if}}
+{{#if person.companyName}}
+Employer: {{person.companyName}}
+{{/if}}
+{{/if}}
+
+# news
+
+Consolidate the news headlines below into at most {{maxNews}} distinct stories, most important first.
+- Group the headlines that report the same event, even when they are worded differently or come from different outlets. Put the id of the clearest, most factual headline first in "ids".
+- Drop headlines that are not about {{subjectName}}: another {{entityType}} with a similar name, articles that only mention {{subjectName}} in passing, roundups and lists, stock price commentary, advertising and job postings.
+- Drop headlines that say nothing specific, such as "News" or "Press releases".
+
+{{#each news}}
+{{id}}. {{#if date}}[{{date}}] {{/if}}{{headline}}
+{{else}}
+(none)
+{{/each}}
+
+# productsAndServices
+
+{{#if company}}
+Consolidate the products and services below into a clean list of at most {{maxProducts}}, most important first.
+- Group the entries that name the same product or service, or parts of one offering, and give each group a short, specific name of 1 to 6 words built from the entries' wording, such as "Salesforce implementation services" or "Payroll software". Put the ids of all the entries in the group in "ids".
+- A single generic word such as "Cloud", "Mobile" or "Data" may join a group whose meaning it fits; drop it otherwise.
+- Drop entries that are not products or services of {{company.name}}: industries, technologies it uses, names of partners, clients or competitors, marketing slogans, and words that make no sense on their own.
+
+{{#each products}}
+{{id}}. {{name}}
+{{else}}
+(none)
+{{/each}}
+{{else}}
+(none: answer with an empty list)
+{{/if}}

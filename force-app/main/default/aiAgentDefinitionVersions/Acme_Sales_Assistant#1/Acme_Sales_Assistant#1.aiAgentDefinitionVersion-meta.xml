@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AiAgentDefinitionVersion xmlns="http://soap.sforce.com/2006/04/metadata">
+    <articleAnswersGPTEnabled>false</articleAnswersGPTEnabled>
+    <billingMode>ActionBased</billingMode>
+    <citationsEnabled>false</citationsEnabled>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The agent instructions</description>
+        <developerName>AgentScriptInternal_agent_instructions</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Agent Instructions</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The next topic to be visited</description>
+        <developerName>AgentScriptInternal_next_topic</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Next Topic</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <copilotPrimaryLanguage>en_US</copilotPrimaryLanguage>
+    <genAiPlannerName>Acme_Sales_Assistant_v1</genAiPlannerName>
+    <isScriptCompatibleAgent>true</isScriptCompatibleAgent>
+    <knowledgeActionEnabled>false</knowledgeActionEnabled>
+    <knowledgeFallbackEnabled>false</knowledgeFallbackEnabled>
+    <planner>
+        <fullName>Acme_Sales_Assistant_v1</fullName>
+        <agentGraphRef>20ZjV000002pQP8</agentGraphRef>
+        <description>Helps Acme Cloud sales reps enrich Accounts and Leads and generate meeting briefs on request.</description>
+        <localTopicLinks>
+            <genAiPluginName>agent_router</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>off_topic</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>sales_prep</genAiPluginName>
+        </localTopicLinks>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Welcome the user and route the request to sales preparation or off-topic handling.</description>
+            <genAiPluginInstructions>
+                <description>You are the Acme Cloud Sales Assistant, an assistant for Acme Cloud sales reps working in Salesforce.
+You enrich Accounts and Leads with company data and generate meeting briefs that prepare a rep for a customer meeting.
+Only use information returned by your actions. Never invent record Ids, company facts or brief content.
+Keep replies short and skimmable.</description>
+                <developerName>instruction0_179jV000000mv8s</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179jV000000mv8s</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localDeveloperName>agent_router</localDeveloperName>
+            <masterLabel>Agent Router</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Redirect the conversation when the request is unrelated to record enrichment or meeting briefs.</description>
+            <genAiPluginInstructions>
+                <description>You are the Acme Cloud Sales Assistant, an assistant for Acme Cloud sales reps working in Salesforce.
+You enrich Accounts and Leads with company data and generate meeting briefs that prepare a rep for a customer meeting.
+Only use information returned by your actions. Never invent record Ids, company facts or brief content.
+Keep replies short and skimmable.</description>
+                <developerName>instruction0_179jV000000mv8r</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179jV000000mv8r</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localDeveloperName>off_topic</localDeveloperName>
+            <masterLabel>Off Topic</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Enriches Accounts and Leads with company data and generates or shows meeting briefs for customer meetings.</description>
+            <genAiPluginInstructions>
+                <description>You are the Acme Cloud Sales Assistant, an assistant for Acme Cloud sales reps working in Salesforce.
+You enrich Accounts and Leads with company data and generate meeting briefs that prepare a rep for a customer meeting.
+Only use information returned by your actions. Never invent record Ids, company facts or brief content.
+Keep replies short and skimmable.</description>
+                <developerName>instruction0_179jV000000mv8t</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179jV000000mv8t</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localActionLinks>
+                <functionName>get_meeting_brief</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>generate_meeting_brief</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>enrich_record</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>list_meetings</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>search_records</functionName>
+            </localActionLinks>
+            <localActions>
+                <description>Enriches an Account or Lead from the company data provider. Only blank fields are filled.</description>
+                <invocationTarget>AgentEnrichRecord</invocationTarget>
+                <invocationTargetType>apex</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>enrich_record</localDeveloperName>
+                <masterLabel>Enrich Record</masterLabel>
+            </localActions>
+            <localActions>
+                <description>Generates a meeting brief from CRM data, conversations, product subscriptions and company data, and returns it as text.</description>
+                <invocationTarget>AgentGenerateMeetingBrief</invocationTarget>
+                <invocationTargetType>apex</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>generate_meeting_brief</localDeveloperName>
+                <masterLabel>Generate Meeting Brief</masterLabel>
+            </localActions>
+            <localActions>
+                <description>Returns the latest existing meeting brief for a brief, account, Task or Event Id without generating a new one.</description>
+                <invocationTarget>AgentGetMeetingBrief</invocationTarget>
+                <invocationTargetType>apex</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+                <localDeveloperName>get_meeting_brief</localDeveloperName>
+                <masterLabel>Get Meeting Brief</masterLabel>
+            </localActions>
+            <localActions>
+                <description>Lists the Tasks and Events of an account from 7 days ago to 30 days ahead, with their Ids and whether a brief exists.</description>
+                <invocationTarget>AgentListMeetings</invocationTarget>
+                <invocationTargetType>apex</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+                <localDeveloperName>list_meetings</localDeveloperName>
+                <masterLabel>List Meetings</masterLabel>
+            </localActions>
+            <localActions>
+                <description>Finds Accounts and Leads by name and returns one line per match with the record type, name and Id.</description>
+                <invocationTarget>AgentSearchRecords</invocationTarget>
+                <invocationTargetType>apex</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+                <localDeveloperName>search_records</localDeveloperName>
+                <masterLabel>Search Records</masterLabel>
+            </localActions>
+            <localDeveloperName>sales_prep</localDeveloperName>
+            <masterLabel>Sales Preparation</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <masterLabel>Acme Sales Assistant</masterLabel>
+        <plannerType>Atlas__ConcurrentMultiAgentOrchestration</plannerType>
+    </planner>
+    <smallTalkEnabled>false</smallTalkEnabled>
+    <staticPromptsEnabled>false</staticPromptsEnabled>
+    <status>Inactive</status>
+    <stopRecPrompts>false</stopRecPrompts>
+    <surfacesEnabled>false</surfacesEnabled>
+    <toneType>Casual</toneType>
+    <version>1</version>
+    <welcomeMessage>Hi, I&apos;m the Acme Cloud Sales Assistant. I can enrich an Account or Lead with company data, or prepare a meeting brief for an upcoming customer meeting.
+For example: &quot;Enrich Northwind Traders&quot; or &quot;Prepare a brief for my Northwind meeting&quot;.</welcomeMessage>
+</AiAgentDefinitionVersion>

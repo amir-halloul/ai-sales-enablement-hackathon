@@ -1,0 +1,14 @@
+{{> company}}
+
+List the company's current leadership: the CEO, the other C-level executives (CFO, COO, CTO, CIO, CMO and so on), the chair of the board and the heads of the main divisions. At most 10 people, most senior first.
+For each person give the full name and the current job title as the company states it.
+Leave out people who have left the company: look for recent leadership changes.
+{{#if knownPeople.length}}
+
+Our data vendors list the people below. Check that they still hold these roles, and add the leaders that are missing:
+{{#each knownPeople}}
+- {{this}}
+{{/each}}
+{{/if}}
+
+{{> security}}

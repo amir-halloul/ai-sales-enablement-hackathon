@@ -1,0 +1,78 @@
+{
+  "url": "https://www.acmecloud.example/products",
+  "products": [
+    {
+      "name": "Acme CRM Cloud",
+      "area": "Sales",
+      "market": "Mid-market and enterprise",
+      "whatItIs": "Cloud CRM for pipeline, accounts and forecasting.",
+      "howItHelps": "Gives sales leaders one forecast and cuts manual reporting.",
+      "worksWith": ["Acme Analytics", "Acme Secure Identity", "Acme Billing"],
+      "status": "Active"
+    },
+    {
+      "name": "Acme Service Desk",
+      "area": "Customer Service",
+      "market": "All segments",
+      "whatItIs": "Omnichannel case management with a self-service portal.",
+      "howItHelps": "Shortens resolution times and deflects routine tickets.",
+      "worksWith": ["Acme CRM Cloud", "Acme Field Service"],
+      "status": "Active"
+    },
+    {
+      "name": "Acme Field Service",
+      "area": "Customer Service",
+      "market": "Companies with on-site technicians",
+      "whatItIs": "Scheduling, dispatch and a mobile app for field technicians.",
+      "howItHelps": "Raises first-time fix rates and technician utilization.",
+      "worksWith": ["Acme Service Desk"],
+      "status": "Active"
+    },
+    {
+      "name": "Acme Analytics",
+      "area": "Data and AI",
+      "market": "All segments",
+      "whatItIs": "Self-service dashboards and AI forecasting on Acme and external data.",
+      "howItHelps": "Turns operational data into decisions without a BI team.",
+      "worksWith": ["Acme CRM Cloud", "Acme Data Pipelines"],
+      "status": "Active"
+    },
+    {
+      "name": "Acme Data Pipelines",
+      "area": "Data and AI",
+      "market": "Mid-market and enterprise",
+      "whatItIs": "Managed connectors that sync ERP, billing and warehouse data.",
+      "howItHelps": "Removes custom integration work when systems or entities are added.",
+      "worksWith": ["Acme Analytics", "Acme Billing"],
+      "status": "Active"
+    },
+    {
+      "name": "Acme Billing",
+      "formerName": "Acme Invoicing",
+      "area": "Finance",
+      "market": "Subscription businesses",
+      "whatItIs": "Subscription billing, invoicing and revenue recognition.",
+      "howItHelps": "Handles multi-entity and multi-currency billing as companies expand.",
+      "worksWith": ["Acme CRM Cloud", "Acme Data Pipelines"],
+      "status": "Active"
+    },
+    {
+      "name": "Acme Secure Identity",
+      "area": "Security",
+      "market": "All segments",
+      "whatItIs": "Single sign-on, MFA and user provisioning for Acme and third-party apps.",
+      "howItHelps": "Speeds onboarding of new hires and reduces access risk.",
+      "worksWith": ["Acme CRM Cloud", "Acme Service Desk"],
+      "status": "Active"
+    },
+    {
+      "name": "Acme Legacy Reports",
+      "area": "Data and AI",
+      "market": "Existing customers only",
+      "whatItIs": "Scheduled static reports, replaced by Acme Analytics.",
+      "howItHelps": "Kept for existing customers until migration.",
+      "worksWith": [],
+      "status": "No longer offered"
+    }
+  ]
+}

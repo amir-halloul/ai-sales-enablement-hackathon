@@ -1,0 +1,57 @@
+# ---------------------------------------------------------------
+# Secrets: never commit keys, tokens or environment files
+# ---------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.p8
+*.pem
+*.key
+*.crt
+*.pfx
+
+# ---------------------------------------------------------------
+# Salesforce CLI and local tooling state
+# ---------------------------------------------------------------
+.sf/
+.sfdx/
+.localdevserver/
+.codegenie/
+IlluminatedCloud/
+.vscode/settings.json
+.idea/
+*.iml
+
+# Agent preview traces and Apex execution output
+**/.sfdx/agents/
+apex-*.txt
+*.apexlog
+
+# ---------------------------------------------------------------
+# Node / enrichment API build output
+# ---------------------------------------------------------------
+node_modules/
+dist/
+coverage/
+reports/
+*.tsbuildinfo
+.npm/
+.eslintcache
+
+# ---------------------------------------------------------------
+# Logs and scratch files
+# ---------------------------------------------------------------
+*.log
+logs/
+tmp/
+temp/
+
+# Local leftovers that are not part of the project
+mock-api/
+
+# ---------------------------------------------------------------
+# OS files
+# ---------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini

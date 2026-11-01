@@ -1,0 +1,9 @@
+node_modules/
+dist/
+coverage/
+reports/
+*.p8
+*.pem
+.env
+.env.*
+!.env.example

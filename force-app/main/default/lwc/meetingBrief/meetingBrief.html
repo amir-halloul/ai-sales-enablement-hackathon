@@ -1,0 +1,158 @@
+<template>
+    <lightning-card title="Meeting Brief" icon-name="utility:einstein">
+        <div slot="actions">
+            <template lwc:if={canGenerate}>
+                <lightning-button-icon
+                    icon-name="utility:settings"
+                    variant="border-filled"
+                    alternative-text="Choose sections"
+                    title="Choose sections"
+                    onclick={handleToggleOptions}
+                    disabled={isGenerating}
+                    class="slds-var-m-right_x-small"
+                ></lightning-button-icon>
+                <lightning-button
+                    label={generateLabel}
+                    icon-name="utility:sparkles"
+                    onclick={handleGenerate}
+                    disabled={isGenerateDisabled}
+                ></lightning-button>
+            </template>
+        </div>
+
+        <div class="slds-var-p-horizontal_medium">
+            <template lwc:if={showOptions}>
+                <lightning-checkbox-group
+                    class="brief-options"
+                    label="Sections to generate"
+                    options={sectionOptions}
+                    value={selectedSections}
+                    onchange={handleSectionChange}
+                ></lightning-checkbox-group>
+            </template>
+
+            <template lwc:if={isGenerating}>
+                <div class="brief-state slds-is-relative">
+                    <lightning-spinner alternative-text="Generating" size="small"></lightning-spinner>
+                    <p class="brief-state__text slds-text-color_weak">
+                        Reading CRM data and writing the brief. This can take up to a minute.
+                    </p>
+                </div>
+            </template>
+            <template lwc:elseif={isLoading}>
+                <div class="brief-state slds-is-relative">
+                    <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                </div>
+            </template>
+            <template lwc:elseif={errorMessage}>
+                <div class="brief-state" role="alert">
+                    <lightning-icon icon-name="utility:error" variant="error" size="small" alternative-text="Error"></lightning-icon>
+                    <p class="slds-var-m-top_x-small">{errorMessage}</p>
+                </div>
+            </template>
+            <template lwc:elseif={isEmpty}>
+                <div class="brief-state">
+                    <lightning-icon icon-name="utility:einstein" size="small" alternative-text=""></lightning-icon>
+                    <p class="slds-text-heading_small slds-var-m-top_x-small">No meeting brief yet</p>
+                    <p class="slds-text-color_weak">Generate one to prepare for your next conversation with this customer.</p>
+                </div>
+            </template>
+            <template lwc:elseif={hasBrief}>
+                <div class="brief-header">
+                    <lightning-icon icon-name={statusIcon} size="x-small" alternative-text={brief.Status__c}></lightning-icon>
+                    <a href={briefUrl} class="slds-var-m-left_x-small">{brief.Name}</a>
+                    <span class="slds-text-color_weak slds-var-m-left_x-small">
+                        {brief.Status__c} ·
+                        <lightning-formatted-date-time
+                            value={brief.CreatedDate}
+                            year="numeric"
+                            month="short"
+                            day="numeric"
+                            hour="2-digit"
+                            minute="2-digit"
+                        ></lightning-formatted-date-time>
+                    </span>
+                </div>
+                <template lwc:if={showStatusMessage}>
+                    <div class="slds-notify slds-notify_alert slds-alert_warning brief-notice" role="status">
+                        {brief.Status_Message__c}
+                    </div>
+                </template>
+
+                <template for:each={sections} for:item="section">
+                    <section key={section.key} class="brief-section">
+                        <h3 class="brief-section__title">{section.label}</h3>
+                        <template lwc:if={section.isError}>
+                            <p class="slds-text-color_error">This section could not be generated.</p>
+                        </template>
+                        <template lwc:elseif={section.isEmpty}>
+                            <p class="slds-text-color_weak">Nothing to report.</p>
+                        </template>
+                        <template for:each={section.blocks} for:item="block">
+                            <div key={block.key} class={block.className}>
+                                <template lwc:if={block.label}>
+                                    <p class="brief-block__label">{block.label}</p>
+                                </template>
+                                <template lwc:if={block.segments}>
+                                    <p>
+                                        <template for:each={block.segments} for:item="segment">
+                                            <template lwc:if={segment.url}>
+                                                <a key={segment.key} href={segment.url} title={segment.title}>{segment.text}</a>
+                                            </template>
+                                            <template lwc:else>
+                                                <span key={segment.key}>{segment.text}</span>
+                                            </template>
+                                        </template>
+                                    </p>
+                                </template>
+                                <template lwc:if={block.items}>
+                                    <ul class="brief-list">
+                                        <template for:each={block.items} for:item="item">
+                                            <li key={item.key}>
+                                                <template lwc:if={item.reference}>
+                                                    <p class="brief-reference">
+                                                        <template lwc:if={item.reference.url}>
+                                                            <a href={item.reference.url}>{item.reference.label}</a>
+                                                        </template>
+                                                        <template lwc:else>{item.reference.label}</template>
+                                                        <template lwc:if={item.reference.detail}>
+                                                            <span class="slds-text-color_weak"> · {item.reference.detail}</span>
+                                                        </template>
+                                                    </p>
+                                                </template>
+                                                <template for:each={item.fields} for:item="field">
+                                                    <p key={field.key}>
+                                                        <template lwc:if={field.label}>
+                                                            <span class="brief-field__label">{field.label}: </span>
+                                                        </template>
+                                                        <template for:each={field.segments} for:item="segment">
+                                                            <template lwc:if={segment.url}>
+                                                                <a key={segment.key} href={segment.url} title={segment.title}>{segment.text}</a>
+                                                            </template>
+                                                            <template lwc:else>
+                                                                <span key={segment.key}>{segment.text}</span>
+                                                            </template>
+                                                        </template>
+                                                    </p>
+                                                </template>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </template>
+                            </div>
+                        </template>
+                    </section>
+                </template>
+
+                <template lwc:if={hasCoverage}>
+                    <div class="brief-sources">
+                        <span class="slds-text-color_weak slds-var-m-right_x-small">Sources</span>
+                        <template for:each={coverage} for:item="source">
+                            <lightning-badge key={source.key} label={source.label} icon-name={source.icon}></lightning-badge>
+                        </template>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>

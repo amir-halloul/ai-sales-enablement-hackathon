@@ -1,0 +1,9 @@
+.enrichment-state {
+    min-height: 4rem;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.enrichment-state__text {
+    padding-top: 3rem;
+}

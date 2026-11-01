@@ -1,0 +1,15 @@
+{{> company}}
+
+Find the most important news about the company from the last 12 months, newest first, at most 8 articles: financial results, acquisitions, partnerships, product launches, leadership changes, legal or regulatory matters, layoffs and expansions.
+For each article give the headline and its publication date (YYYY-MM-DD, or null when the article doesn't show it), with the article itself as the source.
+The headline must tell the news on its own: readers will see only the headline and the date, not the article. Use the published headline when it does. When it only names a document or event, such as "First-Quarter 2026 Trading Update" or "2026 Half-Year Report", write a one-sentence headline with the key facts from the search results instead, for example "Example Corp's first-quarter 2026 revenue rose 8% to EUR 1.2 billion". If you can't find those facts, skip the article.
+Skip reposts of the same story, stock price commentary and articles that only mention the company in passing.
+{{#if knownHeadlines.length}}
+
+Our data vendors already have the headlines below. Report other stories first:
+{{#each knownHeadlines}}
+- {{this}}
+{{/each}}
+{{/if}}
+
+{{> security}}

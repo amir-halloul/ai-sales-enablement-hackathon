@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Attribute__c</fullName>
+    <description>Provider attribute; a dotted path such as address.city reads a key of the attribute value.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Attribute</label>
+    <length>80</length>
+    <required>true</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

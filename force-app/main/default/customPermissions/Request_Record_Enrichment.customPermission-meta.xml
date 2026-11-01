@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Can enrich Leads and Accounts with third-party company and contact data.</description>
+    <isLicensed>false</isLicensed>
+    <label>Request Record Enrichment</label>
+</CustomPermission>

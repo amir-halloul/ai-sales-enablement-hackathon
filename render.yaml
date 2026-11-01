@@ -1,0 +1,28 @@
+# Render Blueprint: free Docker web service. Secrets (sync: false) are entered in the dashboard.
+services:
+  - type: web
+    name: acme-enrichment-api
+    runtime: docker
+    plan: free
+    rootDir: enrichment-api
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    autoDeploy: false
+    envVars:
+      - key: API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ZOOMINFO_CLIENT_ID
+        sync: false
+      - key: ZOOMINFO_CLIENT_SECRET
+        sync: false
+      - key: LOG_FORMAT
+        value: json
+      - key: ZOOMINFO_ENABLED
+        value: "true"
+      - key: DNB_ENABLED
+        value: "false"
+      - key: ENRICHMENT_REQUEST_BUDGET_MS
+        value: "90000"

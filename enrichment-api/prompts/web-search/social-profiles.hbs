@@ -1,0 +1,14 @@
+{{> company}}
+
+Find the company's official social media profiles, when they exist: LinkedIn, X (Twitter), Facebook, Instagram, YouTube, TikTok and GitHub.
+For each profile give its canonical URL as "url", without tracking parameters or regional subdomains (for example https://www.linkedin.com/company/acme), and as "source" the search result where you found it: for example the company's website, which often links its profiles, or the profile page itself.
+Only official corporate accounts: no employee accounts, fan pages or accounts of companies with a similar name. When there are regional accounts, give the main global one.
+{{#if knownSocialProfiles.length}}
+
+Our data vendors list the profiles below. Confirm them and add the missing ones:
+{{#each knownSocialProfiles}}
+- {{this}}
+{{/each}}
+{{/if}}
+
+{{> security}}

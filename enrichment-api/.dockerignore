@@ -1,0 +1,10 @@
+node_modules
+dist
+coverage
+reports
+test
+infra
+.git
+*.p8
+*.pem
+.env

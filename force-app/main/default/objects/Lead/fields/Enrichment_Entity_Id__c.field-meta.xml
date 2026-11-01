@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Enrichment_Entity_Id__c</fullName>
+    <description>Identifier returned by the enrichment provider; skips identification on the next run.</description>
+    <label>Enrichment Entity Id</label>
+    <length>64</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,21 @@
+{{> company}}
+
+Describe what the company sells and who it competes with:
+- productsAndServices: its main products, product lines and services, at most 10, using the names the company uses.
+- competitors: its main competitors, at most 8 companies, as named by the company, analysts or reputable press.
+{{#if knownProducts.length}}
+
+Our data vendors list these products and services:
+{{#each knownProducts}}
+- {{this}}
+{{/each}}
+{{/if}}
+{{#if knownCompetitors.length}}
+
+Our data vendors list these competitors:
+{{#each knownCompetitors}}
+- {{this}}
+{{/each}}
+{{/if}}
+
+{{> security}}
