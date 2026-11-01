@@ -7,7 +7,7 @@ system:
     messages:
         welcome: |
             Hi, I'm the Acme Cloud Sales Assistant. I can enrich an Account or Lead with company data, or prepare a meeting brief for an upcoming customer meeting.
-            For example: "Enrich Northwind Traders" or "Prepare a brief for my Northwind meeting".
+            For example: "Enrich Saint-Gobain" or "Prepare a brief for my Analytics renewal review with OSF Digital".
         error: "Sorry, something went wrong. Please try again."
 
 config:
@@ -107,7 +107,7 @@ subagent sales_prep:
                     is_required: True
             outputs:
                 status: string
-                    description: "Succeeded, Partially Enriched, No Match, Ambiguous Match or Failed."
+                    description: "Succeeded, Partial, No Match, Ambiguous Match or Failed."
                 message: string
                     description: "What happened, including the fields that were filled."
                 recordName: string
